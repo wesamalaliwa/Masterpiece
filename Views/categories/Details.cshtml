@@ -1,0 +1,42 @@
+﻿@model MyMasterOrange.Models.category
+
+@{
+    Layout = "~/Views/Shared/_DashLay.cshtml";
+    ViewBag.Title = "Details";
+}
+
+<div class="content-wrapper d-flex justify-content-center">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <br />
+        <h2 style="text-align:center"><strong>Category Details</strong></h2>
+
+
+        <div class="card ">
+            <div class="card-header">
+                <h4 class="card-title">Category</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.category_name)</dd>
+
+                    <dt class="col-sm-3">Description</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Category_des)</dd>
+
+                    <dt class="col-sm-3">Second Description</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Category_des2)</dd>
+
+                    <dt class="col-sm-3">Image</dt>
+                    <dd class="col-sm-9"><img style="width:200px;" src="@Url.Content("~/Images/" + Model.category_image1)" alt="Image" /></dd>
+                
+                </dl>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.category_id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

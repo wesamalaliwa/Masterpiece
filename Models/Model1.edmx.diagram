@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="070384aff4e545e980da279580b7bed7" Name="Diagram1" ZoomLevel="58">
+        <EntityTypeShape EntityType="mastermvcModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.AspNetRole" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.AspNetUser" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.cart" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.category" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.comment" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.guest" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.order_details" Width="1.5" PointX="10.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.order_states" Width="1.5" PointX="6" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.order" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.payment" Width="1.5" PointX="10.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.product" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="mastermvcModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="mastermvcModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.FK__cart__user_id__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.fk_comments_users" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.fk_orders_users" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.FK__cart__guest_id__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.FK__cart__product_id__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.FK__products__catego__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.fk_comments_products" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.fk_orders_guests" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.FK__order_det__order__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.FK__order_det__produ__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.fk_orders_states" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.fk_payments_orders" ManuallyRouted="false" />
+        <AssociationConnector Association="mastermvcModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

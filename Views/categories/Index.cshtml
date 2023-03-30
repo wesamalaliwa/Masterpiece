@@ -1,0 +1,293 @@
+﻿@{
+    Layout = "~/Views/Shared/_DashLay.cshtml";
+}
+
+
+@model IEnumerable<MyMasterOrange.Models.category>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    ActionLink {
+        text-decoration: none;
+        color: white;
+    }
+
+    .thumbnail {
+        top: -50px;
+        left: -35px;
+        /*        display: block;
+    */ z-index: 999;
+        cursor: pointer;
+        margin: 35%;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease;
+    }
+
+        .thumbnail:hover {
+            transform: scale(2);
+        }
+</style>
+
+<br />
+<h2 style="text-align:center"><strong>Categories</strong></h2>
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header"> @Html.ActionLink("Create New Category", "Create", new { @class = "btn btn-primary" })</h5>
+
+
+            <div class="table-responsive text-nowrap">
+                <div class="input-group">
+                    @*@using (Html.BeginForm("Index", "categories", FormMethod.Get))
+                        {
+                            <input type="text" class="form-control" placeholder="Search By Category Name." aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                        }*@
+                </div>
+                <section class="d-flex justify-content-center" id="hh" style="text-align:center">
+                    <div class="form-group" style="text-align:center">
+                        <div class="input-group">
+                            @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+                            {
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Search by category name" name="searchName" value="@ViewBag.CurrentFilter" />
+                                </div>
+                                <br />
+                                <div class="input-group-append" style="text-align:center;">
+                                    <button class="btn btn-secondary" type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+                @*<i class="fas fa-search">hhh</i>*@
+                <!--Search
+                                    </button>
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </section>-->
+                <br />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>
+                                    @Html.DisplayNameFor(model => model.category_name)
+                                </strong>
+                            </th>
+                            <th>
+                                <strong>
+                                    @Html.DisplayNameFor(model => model.Category_des)
+                                </strong>
+                            </th>
+                            <th>
+                                <strong>
+                                    @Html.DisplayNameFor(model => model.Category_des2)
+                                </strong>
+                            </th>
+                            <th>
+                                <strong>
+                                    @Html.DisplayNameFor(model => model.category_image1)
+                                </strong>
+                            </th>
+                            @*<th>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.category_image2)
+                                    </strong>
+                                </th>
+                                <th>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.category_image3)
+                                    </strong>
+                                </th>*@
+                            <th>
+                                <strong>
+                                    Actions
+                                </strong>
+
+                            </th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model)
+                    {
+                        <tbody class="table-border-bottom-0 ">
+
+                            <tr class="">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.category_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category_des)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category_des2)
+                                </td>
+                                <td style="display:flex; flex-wrap:wrap; justify-content:center">
+
+                                    @*@Html.DisplayFor(modelItem => item.category_image1)*@
+                                    <img class="thumbnail d-flex justify-content-center" style="width:100px; align-content:center " src="~/Images/@item.category_image1" alt="category_image1" />
+                                </td>
+
+
+                                @*@if (!string.IsNullOrEmpty(Model.category_image1))
+                                    {
+                                        <div>
+                                            <img src="@Url.Content("~/Images/" + Model.category_image1)" alt="Uploaded Image" class="img-fluid" />
+                                        </div>
+                                    }*@
+
+
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.category_image2)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.category_image3)
+                                    </td>*@
+                                <td style="color:white">
+                                    <button style="color:white" type="button" class="btn btn-success"> @Html.ActionLink("Edit", "Edit", new { id = item.category_id }) </button> <br /> <br />
+                                    <button type="button" class="btn btn-info">@Html.ActionLink("Details", "Details", new { id = item.category_id })  </button><br />
+                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.category_id })*@
+
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalToggle">
+                                            Delete
+                                        </button>
+
+                                        <!-- Modal 1-->
+                                        <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        @*<h5 class="modal-title" id="modalToggleLabel">Modal 1</h5>*@
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    @*<div class="modal-body" style="color:black">You Cant Delete this Category; Because It Contains Products</div>*@
+                                                    <div class="alert alert-danger" role="alert">You Cant Delete this Category; Because It Contains Products</div>
+                                                    @*<div class="modal-footer">
+                                                            <button class="btn btn-primary" data-bs-target="#modalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                                                Open second modal
+                                                            </button>
+                                                        </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal 2-->
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+                <br />
+                <br />
+
+
+
+            </div>
+        </div>
+        <!--/ Basic Bootstrap Table -->
+        <!-- Bordered Table -->
+        <!-- Small table -->
+        <!--/ Small table -->
+        <!--/ Table within card -->
+        <!--/ Responsive Table -->
+    </div>
+    <!-- / Content -->
+    <!-- Footer -->
+
+
+    <div class="content-backdrop fade"></div>
+</div>
+
+@*<div class="ttr_about-me_html_row1 row">
+    <div class="post_column col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12">
+        <div class="ttr_about-me_html_column10">
+            <div class="margin_collapsetop"></div>
+            <div class="html_content">
+                <p>
+                    <span class="ttr_image" style="display:block; overflow:hidden; text-align:center;">
+                        <img class="ttr_uniform" style="margin:0 auto; max-height:100%; max-width:100%;" src="https://media.istockphoto.com/id/1040613350/photo/photographer-working-with-his-team-during-a-photo-shoot-in-a-studio.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=y8aG_kXfiEccEqRAqsKR8mxc49haQ7SEQQBxdB2PK1I=" alt="img">
+                    </span>
+                </p>
+            </div>
+            <div class="margin_collapsetop"></div>
+        </div>
+    </div>
+    <div class="post_column col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12">
+        <div class="ttr_about-me_html_column11">
+            <div class="margin_collapsetop"></div>
+            <div class="html_content">
+                <p><br></p>
+                <p style="color:rgba(51,51,51,1);line-height:1.4em;margin:0px 0px 0px 0px;">
+                    <span style="font-size:2.5em;"><strong>Hi, I'm Lisa Smith, Art &amp; Craft Artist</strong></span>
+                </p>
+                <p style="color:rgba(51,51,51,1);line-height:1.4em;margin:15px 0px 30px 0px;">
+                    <span style="font-size:1.2em;">
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </span>
+                </p>
+                <p style="color:rgba(51,51,51,1);line-height:1.4em;margin:5px 0px 30px 0px;">
+                    <a class="btn btn-md btn-default" target="_self" style="background-color:#000000;color:#FFFFFF;">
+                        <span>Learn More</span>
+                    </a>
+                </p>
+            </div>
+            <div class="margin_collapsetop"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-6">
+        <div class="team-member clearfix">
+            <a class="overlayed" href="#"><img src="https://images.squarespace-cdn.com/content/v1/5fece33cfbf14e2399eeeb10/1626889998241-SHK62CT48QRY5XVDIIVQ/Timeless+engagement+photo+walking+through+golden+field+hand+in+hand." alt="team member one"></a>
+            <h3><a href="#">Lorem Ipsum</a></h3>
+            <p class="subtitle">Founder &amp; CEO</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <ul class="list-unstyled">
+                <li class="phone"><em><i class="fa fa-phone"><span class="sr-only">phone</span></i></em> +1 212-582-8102</li>
+                <li class="email"><em><i class="fa fa-envelope"><span class="sr-only">email</span></i></em> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class="team-member clearfix">
+            <a class="overlayed" href="#"><img src="https://images.squarespace-cdn.com/content/v1/5fece33cfbf14e2399eeeb10/1626889998241-SHK62CT48QRY5XVDIIVQ/Timeless+engagement+photo+walking+through+golden+field+hand+in+hand." alt="team member one"></a>
+            <h3><a href="#">Lorem Ipsum</a></h3>
+            <p class="subtitle">Founder &amp; CEO</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <ul class="list-unstyled">
+                <li class="phone"><em><i class="fa fa-phone"><span class="sr-only">phone</span></i></em> +1 212-582-8102</li>
+                <li class="email"><em><i class="fa fa-envelope"><span class="sr-only">email</span></i></em> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class="team-member clearfix">
+            <a class="overlayed" href="#"><img src="https://images.squarespace-cdn.com/content/v1/5fece33cfbf14e2399eeeb10/1626889998241-SHK62CT48QRY5XVDIIVQ/Timeless+engagement+photo+walking+through+golden+field+hand+in+hand." alt="team member one"></a>
+            <h3><a href="#">Lorem Ipsum</a></h3>
+            <p class="subtitle">Founder &amp; CEO</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <ul class="list-unstyled">
+                <li class="phone"><em><i class="fa fa-phone"><span class="sr-only">phone</span></i></em> +1 212-582-8102</li>
+                <li class="email"><em><i class="fa fa-envelope"><span class="sr-only">email</span></i></em> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+            </ul>
+        </div>
+    </div>
+</div>*@

@@ -1,0 +1,203 @@
+﻿@model IEnumerable<MyMasterOrange.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DashLay.cshtml";
+}
+<style>
+        ActionLink {
+            text-decoration: none;
+            color: white;
+        }
+
+        .thumbnail {
+            top: -50px;
+            left: -35px;
+            /*        display: block;
+    */ z-index: 999;
+            cursor: pointer;
+            margin: 35%;
+            -webkit-transition-property: all;
+            -webkit-transition-duration: 0.3s;
+            -webkit-transition-timing-function: ease;
+        }
+
+            .thumbnail:hover {
+                transform: scale(2);
+
+            }
+</style>
+<br />
+<h2 style="text-align:center"><strong>Products</strong></h2>
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header"> @Html.ActionLink("Create New Product", "Create", new { @class = "btn btn-primary" })</h5>
+
+            <div class="table-responsive text-nowrap">
+                <section class="d-flex justify-content-center" id="hh" style="text-align:center">
+                    <div class="form-group" style="text-align:center">
+                        <div class="input-group">
+                            @using (Html.BeginForm("Index", "products", FormMethod.Get))
+                            {
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Search by category name" name="searchName" value="@ViewBag.CurrentFilter" />
+                                </div>
+                                <br />
+                                <div class="input-group-append" style="text-align:center;">
+                                    <button class="btn btn-secondary" type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+                <br />
+                <table class="table table-bordered">
+                    <tr>
+                        <th>
+                            <strong>
+                                @Html.DisplayNameFor(model => model.product_name)
+                            </strong>
+                        </th>
+                        <th>
+                            <strong>
+                                @Html.DisplayNameFor(model => model.product_price)
+                            </strong>
+                        </th>
+                        @*<th>
+                    <strong>
+                        @Html.DisplayNameFor(model => model.product_discount)
+                    </strong>
+                </th>*@
+                        <th>
+                            <strong>
+                                @Html.DisplayNameFor(model => model.product_des)
+                            </strong>
+                        </th>
+                        @*<th>
+                    <strong>
+                        @Html.DisplayNameFor(model => model.product_des2)
+                    </strong>
+                </th>*@
+                        <th>
+                            <strong>
+                                @Html.DisplayNameFor(model => model.product_image1)
+                            </strong>
+                        </th>
+                        @*<th>
+                    <strong>
+                        @Html.DisplayNameFor(model => model.product_image2)
+                    </strong>
+                </th>
+                <th>
+                    <strong>
+                        @Html.DisplayNameFor(model => model.product_image3)
+
+                    </strong>
+                </th>
+                <th>
+                    <strong>
+
+                        @Html.DisplayNameFor(model => model.product_image4)
+                    </strong>
+
+                </th>
+                <th>
+                    <strong>
+
+                        @Html.DisplayNameFor(model => model.product_image5)
+                    </strong>
+
+                </th>*@
+                        <th>
+                            <strong>
+
+                                @Html.DisplayNameFor(model => model.product_quantity)
+                            </strong>
+
+                        </th>
+                        <th>
+                            <strong>
+
+                                @Html.DisplayNameFor(model => model.category.category_name)
+                            </strong>
+
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product_price)
+                            </td>
+                            @*<td>
+            @Html.DisplayFor(modelItem => item.product_discount)
+        </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product_des)
+                            </td>
+                            @*<td>
+            @Html.DisplayFor(modelItem => item.product_des2)
+        </td>*@
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.product_image1)
+                            </td>*@
+                            <td style="display:flex; flex-wrap:wrap; justify-content:center">
+
+                                @*@Html.DisplayFor(modelItem => item.category_image1)*@
+                                <img class="thumbnail d-flex justify-content-center" style="width:100px; align-content:center " src="~/Images/@item.product_image1" alt="product_image1" />
+                            </td>
+                            @*<td>
+            @Html.DisplayFor(modelItem => item.product_image2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_image3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_image4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_image5)
+        </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product_quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.category.category_name)
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) 
+                                    </button>
+                                <br />
+                                <br />
+                                <button type="button" class="btn btn-info">
+                                    @Html.ActionLink("Details", "Details", new { id = item.product_id }) 
+                                    </button>
+                                <br />
+                                <br />
+                                <button type="button" class="btn btn-danger">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
+                                    </button>
+</td>
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
